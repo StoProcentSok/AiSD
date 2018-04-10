@@ -1,8 +1,6 @@
 #include "SinLiLists.h"
 
 
-
-
 node SingleLinkedList::createHead(int headValue){
 	node *Head = new node;
 	Head->value = headValue;
@@ -10,13 +8,7 @@ node SingleLinkedList::createHead(int headValue){
 	return *Head;
 }
 
-void SingleLinkedList::populateWithRandom(node *H, int min, int max, int howMany) {
-	node* p = H;
-	for (int i = 1; i < howMany; i++) {
-		int newValue = rand()% max + min;
-		SingleLinkedList::addNodeToEnd(p, newValue);
-	}
-}
+
 
 void SingleLinkedList::showList(node* H) {
 	node* p = H;
@@ -161,8 +153,17 @@ void SingleLinkedList::addInMiddle(node *H, int newValue) {
 	}
 }
 
-void SingleLinkedList::deleteHead(node *H) {
-	node *temp = H->next;
-	H = temp->next;
-	//H = temp;
+void SingleLinkedList::populateWithRandom(node *H, int min, int max, int howMany) {
+	node* p = H;
+	for (int i = 1; i < howMany; i++) {
+		int newValue = rand()% max + min;
+		SingleLinkedList::addNodeToEnd(p, newValue);
+	}
 }
+
+void SingleLinkedList::deleteHead(node *&H) {
+	//TODO warunki brzegowe
+	node *temp = H->next;
+	H = temp;
+}
+//TODO: usun ostatni, usun n-ty

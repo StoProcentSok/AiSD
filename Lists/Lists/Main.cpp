@@ -2,7 +2,7 @@
 #include "SinLiLists.h"
 
 using namespace std;
-//
+
 int main() {
 
 	SingleLinkedList lista;
@@ -13,11 +13,14 @@ int main() {
 	
 	lista.addNodeToEnd(&Head, 2);
 	lista.addNodeToEnd(&Head, 3);
-	lista.showList(&Head);
 	
 	cout << "Length is: " << lista.getListLenght(&Head) << endl; 
-	lista.deleteHead(&Head);
+
 	lista.showList(&Head);
+	lista.showList(&Head);
+	
+	lista.deleteHead(*&Head);
+
 	system("pause");
 
 	return 0;
