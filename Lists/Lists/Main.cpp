@@ -15,7 +15,7 @@ int getListLenght(node *H);
 void addNodeAfterNth(node *H, int nth, int newValue, bool forced);
 void addNodeBeforeNth(node *&H, int nth, int newValue);
 
-
+//
 int main() {
 
 	node* Head = new node;
