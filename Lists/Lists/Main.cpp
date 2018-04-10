@@ -2,7 +2,7 @@
 #include "SinLiLists.h"
 
 using namespace std;
-
+//
 int main() {
 
 	SingleLinkedList lista;
