@@ -1,23 +1,26 @@
 #include "SinLiLists.h"
 
 
-node SingleLinkedList::createHead(int headValue){
-	node *Head = new node;
-	Head->value = headValue;
-	Head->next = NULL;		
-	return *Head;
+//node SingleLinkedList::createHead(int headValue){
+//	node* Head = new node;
+//	Head->value = headValue;
+//	Head->next = NULL;		
+//	return &Head;
+//}
+
+
+
+void SingleLinkedList::showList() {
+	
 }
 
+void SingleLinkedList::addNode(int newValue) {
+	node* n = new node();
+	n->value = newValue;
+	n->next = NULL;
 
-
-void SingleLinkedList::showList(node* H) {
-	node* p = H;
-	cout << "H : ";
-	while (p != NULL) {
-		cout << p->value << " -> ";
-		p = p->next;
-	}
-	cout << "NULL" << endl;
+	if(head == NULL)
+	head = n;
 }
 
 void SingleLinkedList::addNodeBeforeHead(node *&H, int newValue) {
@@ -48,12 +51,11 @@ int SingleLinkedList::getListLenght(node *H) {
 	node *p = new node;
 	p = H;
 	int counter = 0;
-	if (H != NULL) {
-		counter++;
-		while (p->next != NULL) {
-			counter++;
-			p = p->next;
-		}
+	if (p != NULL) {
+			while (p != NULL) {
+				counter++;
+				p = p->next;
+			}
 	}
 	return counter;
 }
@@ -159,6 +161,17 @@ void SingleLinkedList::populateWithRandom(node *H, int min, int max, int howMany
 		int newValue = rand()% max + min;
 		SingleLinkedList::addNodeToEnd(p, newValue);
 	}
+}
+
+void SingleLinkedList::deleteLast(node *H) {
+	node* p = H;
+	while (p != NULL) {
+		while (p->next->next != NULL) {
+			p = p->next;
+		}
+	}
+	delete  p->next->next;
+	p->next = NULL;
 }
 
 void SingleLinkedList::deleteHead(node *&H) {

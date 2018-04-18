@@ -116,10 +116,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\BinaryTrees\BinaryTrees.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SinLiLists.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\BinaryTrees\BinaryTrees.h" />
     <ClInclude Include="SinLiLists.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

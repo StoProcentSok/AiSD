@@ -21,9 +21,15 @@
     <ClCompile Include="SinLiLists.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\BinaryTrees\BinaryTrees.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SinLiLists.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\BinaryTrees\BinaryTrees.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
