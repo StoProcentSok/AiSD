@@ -18,18 +18,24 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SinLiLists.cpp">
+    <ClCompile Include="SingleLinkedLists\SinLiLists.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\BinaryTrees\BinaryTrees.cpp">
+    <ClCompile Include="BinaryTrees\BinaryTrees.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListsSorters\ListsSorters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SinLiLists.h">
+    <ClInclude Include="SingleLinkedLists\SinLiLists.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\BinaryTrees\BinaryTrees.h">
+    <ClInclude Include="BinaryTrees\BinaryTrees.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListsSorters\ListsSorters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
