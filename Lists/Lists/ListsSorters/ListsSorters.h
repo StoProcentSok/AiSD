@@ -7,7 +7,8 @@ static class ListsSorters : SingleLinkedList {
 private:
 	int GetListLength(node* head);
 	void SwapAdjacentNodes(node* first, node* second, node*& head);
-	void Merge(node* left, node* right);
+	struct SingleLinkedList::node*& Merge(node* left, node* right);
+	void Partition(node*& head, node*& _left, node*& _right);
 
 public:
 	void ListEveryElement(node* head);

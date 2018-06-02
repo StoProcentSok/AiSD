@@ -58,7 +58,7 @@ void ListsSorters::SwapAdjacentNodes(node* first, node* second, node*& head) {
 		temp2->next = first;
 	}
 	
-	cout << "swapped" << endl;
+	cout << "swapped ";
 	//TODO: Wrocic do proby swapowania bez wskazywania na elementy poprzednie.
 	
 
@@ -81,18 +81,70 @@ void ListsSorters::BubbleSort(node*& head) {
 		}
 	}
 
-	/*else cout << "Nothing to sort!" << endl;*/
 	//chrono endtime:
 	auto endTime = chrono::high_resolution_clock::now();
 	chrono::duration<double> elapsed = endTime - startTime;
 
-	cout << "Elapsed execution time: " << elapsed.count() << endl;
+	cout << endl << endl << "Elapsed execution time: " << elapsed.count() << endl;
 }
 
-void ListsSorters::Merge(node* left, node* right) {
+struct SingleLinkedList::node*& ListsSorters::Merge(node* left, node* right) {
+	node* mergedList = NULL;
+	if (left == NULL) {
+		return right;
+	}
+	else if (right == NULL) {
+		return left;
+	}
 
+	if (left->value <= right->value) {
+		mergedList = left;
+		mergedList->next = Merge(left->next, right);
+	}
+	else {
+		mergedList = right;
+		mergedList->next = Merge(left, right->next);
+	}
+	return mergedList;
+}
+
+void ListsSorters::Partition(node*& head, node*& _left, node*& _right) {
+	node* traveler;
+	node* halfTraveler;
+
+	if (head == NULL || head->next == NULL) {
+		_left = head;
+		_right = NULL;
+	}
+	else {
+		halfTraveler = head;
+		traveler = head->next;
+
+		while (traveler != NULL) {
+			traveler = traveler->next;
+			if (traveler != NULL) {
+				halfTraveler = halfTraveler->next;
+				traveler = traveler->next;
+			}
+		}
+	*&_left = head;
+	*&_right = halfTraveler->next;
+	halfTraveler->next = NULL;
+	}
 }
 
 void ListsSorters::MergeSort(node*& head) {
+	node* SortHead = head;
+	node* left = NULL;
+	node* right = NULL;
 
+	if (SortHead == NULL || SortHead->next == NULL) {
+		return;
+	}
+	
+	Partition(SortHead, left, right);
+	MergeSort(left);
+	MergeSort(right);
+
+	head = Merge(left, right);
 }
