@@ -29,7 +29,7 @@ void ListsSorters::ListEveryElement(node* head) {
 	}
 }
 
-void ListsSorters::SwapTwoNodes(node* first, node* second, node*& head) {
+void ListsSorters::SwapAdjacentNodes(node* first, node* second, node*& head) {
 	//dzialajacy swap na :
 	/*int helper = first->value;
 	first->value = second->value;
@@ -74,7 +74,7 @@ void ListsSorters::BubbleSort(node*& head) {
 		node* temp = head;
 		while (temp != NULL && temp->next != NULL) {
 			if (temp->value > temp->next->value) {
-				SwapTwoNodes(temp, temp->next, *&head);
+				SwapAdjacentNodes(temp, temp->next, *&head);
 				swap = true;
 			}
 			temp = temp->next;
