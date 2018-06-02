@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <chrono> //timer, clock
 #include "ListsSorters.h"
 
 using namespace std;
@@ -28,43 +29,62 @@ void ListsSorters::ListEveryElement(node* head) {
 	}
 }
 
-void ListsSorters::SwapTwoNodes(node* first, node* second) {
-	//dzialacy swap na liczbach:
+void ListsSorters::SwapTwoNodes(node* first, node* second, node*& head) {
+	//dzialajacy swap na :
 	/*int helper = first->value;
 	first->value = second->value;
 	second->value = helper;*/
 
-	node* temp1 = first;
-	node* temp2 = second;
-	first = temp2;
-	temp2->next = temp1->next->next;
-
+	if (first == head) {
+		node* temp1 = first;
+		node* temp2 = second;
+		temp1->next = temp2->next;
+		head = temp2;
+		head->next = temp1;
+	}
+	else
+	{
+		node* temp;
+		node* temp1;
+		node* temp2;
+		temp = head;
+		while (temp->next != first) {
+			temp = temp->next;
+		}
+		temp1 = temp; //wskazuje przed 1
+		temp2 = temp->next->next; //wskazuje na 2
+		first->next = temp2->next;
+		temp->next = temp2;
+		temp2->next = first;
+	}
 	
+	cout << "swapped" << endl;
+	//TODO: Wrocic do proby swapowania bez wskazywania na elementy poprzednie.
 	
 
 }
 
-void ListsSorters::BubbleSort(node* head) {
-	if (head != NULL) {
-		node* temp = head;
-		int length = GetListLength(head);
+void ListsSorters::BubbleSort(node*& head) {
+	//Record start time with chrono:
+	auto startTime = chrono::high_resolution_clock::now(); //c++11 auto keyworad instead of chrono std::chrono::time_point<std::chrono::high_resolution_clock> type
 	
-		cout << "Length to sort is: " << length << endl;
-		for (int i = 0; i < length -1; i++)
-		{
-			for (int j = 0; j < length - i; j++)
-			{
-				if (temp->next != NULL) {
-					if (temp->value > temp->next->value) {
-						SwapTwoNodes(temp, temp->next);
-						cout << "swapped" << endl;
-					}
-				}
-				temp = temp->next;
+	bool swap = true;
+	while (swap == true) {
+		swap = false;
+		node* temp = head;
+		while (temp != NULL && temp->next != NULL) {
+			if (temp->value > temp->next->value) {
+				SwapTwoNodes(temp, temp->next, *&head);
+				swap = true;
 			}
-			temp = head;
+			temp = temp->next;
 		}
-		//delete temp; <- stracone 3 godziny, rozjebuje liste, gubi heada.. :( 
 	}
-	else cout << "Head is NULL, nothing to sort" << endl;
+
+	/*else cout << "Nothing to sort!" << endl;*/
+	//chrono endtime:
+	auto endTime = chrono::high_resolution_clock::now();
+	chrono::duration<double> elapsed = endTime - startTime;
+
+	cout << "Elapsed execution time: " << elapsed.count() << endl;
 }

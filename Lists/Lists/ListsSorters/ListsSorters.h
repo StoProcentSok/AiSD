@@ -6,11 +6,11 @@ static class ListsSorters : SingleLinkedList {
 
 private:
 	int GetListLength(node *head);
-	void SwapTwoNodes(node* first, node* second);
+	void SwapTwoNodes(node* first, node* second, node*&);
 
 public:
 	void ListEveryElement(node *head);
-	void BubbleSort(node *head);
+	void BubbleSort(node *&head);
 
 };
 
