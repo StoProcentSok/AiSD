@@ -5,13 +5,14 @@
 static class ListsSorters : SingleLinkedList {
 
 private:
-	int GetListLength(node *head);
-	void SwapAdjacentNodes(node* first, node* second, node*&);
+	int GetListLength(node* head);
+	void SwapAdjacentNodes(node* first, node* second, node*& head);
+	void Merge(node* left, node* right);
 
 public:
-	void ListEveryElement(node *head);
-	void BubbleSort(node *&head);
-
+	void ListEveryElement(node* head);
+	void BubbleSort(node*& head);
+	void MergeSort(node*& head);
 };
 
 #endif

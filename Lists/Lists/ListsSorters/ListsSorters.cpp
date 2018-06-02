@@ -88,3 +88,11 @@ void ListsSorters::BubbleSort(node*& head) {
 
 	cout << "Elapsed execution time: " << elapsed.count() << endl;
 }
+
+void ListsSorters::Merge(node* left, node* right) {
+
+}
+
+void ListsSorters::MergeSort(node*& head) {
+
+}
