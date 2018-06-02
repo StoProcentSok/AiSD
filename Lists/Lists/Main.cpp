@@ -9,18 +9,22 @@
 using namespace std;
 
 int main() {
-	srand(time(0));
+	//srand(time(0));
 	SingleLinkedList lista;
-	lista.PopulateWithRandom(1, 20, 20);
+	lista.PopulateWithRandom(1, 20, 10);
 	lista.ShowList();
+
+	//lista.SwitchFirstAndLast(lista.head);
+	
+	lista.SwitchFirstAndLast();
 
 	ListsSorters sorter;
 	//cout << endl << "sorting..." << endl;
 	//sorter.BubbleSort(lista.head);
 	//lista.ShowList();
 
-	cout << "merge sort:" << endl;
-	sorter.MergeSort(lista.head);
+	//cout << "merge sort:" << endl;
+	//sorter.MergeSort(lista.head);
 	lista.ShowList();
 	
 	

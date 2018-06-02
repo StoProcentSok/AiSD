@@ -82,13 +82,17 @@ void SingleLinkedList::PopulateWithRandom(int min, int max, int howMany) {
 			int newValue = rand() % max + min;
 			SingleLinkedList::AddNode(newValue);
 		}
-		//Ostatni element to NULL, metoda addNode dodaje node'a w ktorym next = NULL.
+		//Ostatni element to NULL, metoda addNode zapewnia dodanie node'a w ktorym ->next = NULL.
 	}
 }
 
 void SingleLinkedList::AddNodeBeforeHead(int newValue) {
 	if (head != NULL) {
-
+		node* temp = head;
+		node* newNode = new node;
+		newNode->value = newValue;
+		newNode->next = temp;
+		SingleLinkedList::head = newNode;
 	}
 	else {
 		cout << "List is empty, initialize value(s) first!" << endl;
@@ -116,16 +120,15 @@ void SingleLinkedList::DeleteHead() {
 void SingleLinkedList::SwitchFirstAndLast() {
 	if (head != NULL) {
 		if (head->next != NULL) {
+			node* tempHead = head;
 			current = head;
-			//int container = current->value;
-			node* container = &*(head);
-			while (current->next != NULL) {
+			while (current->next->next != NULL) {
 				current = current->next;
 			}
-
-			head = current;
-			current = container;
+			node* temp = current;
+			tempHead->next = 
 			
+			//node* temp = current; //container wskazuje na przedostatni element
 			
 			
 		}

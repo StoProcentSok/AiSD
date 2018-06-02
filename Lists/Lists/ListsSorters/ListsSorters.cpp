@@ -80,12 +80,57 @@ void ListsSorters::BubbleSort(node*& head) {
 			temp = temp->next;
 		}
 	}
-
 	//chrono endtime:
 	auto endTime = chrono::high_resolution_clock::now();
 	chrono::duration<double> elapsed = endTime - startTime;
 
 	cout << endl << endl << "Elapsed execution time: " << elapsed.count() << endl;
+}
+
+//////////////////// Merge Sort ////////////////////
+
+void ListsSorters::MergeSort(node*& head) {
+	node* SortHead = head; //main head of original list to sort.
+	node* left = NULL;
+	node* right = NULL;
+
+	if (SortHead == NULL || SortHead->next == NULL) {
+		return;
+	}
+	
+	Partition(SortHead, left, right);
+	MergeSort(left);
+	MergeSort(right);
+
+	head = Merge(left, right);
+}
+
+void ListsSorters::Partition(node*& head, node*& _left, node*& _right) {
+	node* traveler;
+	node* halfTraveler;
+
+	if (head == NULL || head->next == NULL) {
+		_left = head;
+		_right = NULL;
+	}
+	else {
+		halfTraveler = head;
+		traveler = head->next;
+
+		while (traveler != NULL) {
+			traveler = traveler->next;
+			if (traveler != NULL) {
+				halfTraveler = halfTraveler->next;
+				traveler = traveler->next;
+			}
+		}
+		*&_left = head;
+		*&_right = halfTraveler->next;
+		halfTraveler->next = NULL;
+		PrintMergedParts(_left);
+		PrintMergedParts(_right);
+		cout << "------" << endl;
+	}
 }
 
 struct SingleLinkedList::node*& ListsSorters::Merge(node* left, node* right) {
@@ -108,43 +153,15 @@ struct SingleLinkedList::node*& ListsSorters::Merge(node* left, node* right) {
 	return mergedList;
 }
 
-void ListsSorters::Partition(node*& head, node*& _left, node*& _right) {
-	node* traveler;
-	node* halfTraveler;
-
-	if (head == NULL || head->next == NULL) {
-		_left = head;
-		_right = NULL;
+void ListsSorters::PrintMergedParts(node* head) {
+	node* temp = head;
+	while (temp != NULL) {
+		cout << temp->value << ",";
+		temp = temp->next;
 	}
-	else {
-		halfTraveler = head;
-		traveler = head->next;
-
-		while (traveler != NULL) {
-			traveler = traveler->next;
-			if (traveler != NULL) {
-				halfTraveler = halfTraveler->next;
-				traveler = traveler->next;
-			}
-		}
-	*&_left = head;
-	*&_right = halfTraveler->next;
-	halfTraveler->next = NULL;
-	}
+	cout << endl;
 }
 
-void ListsSorters::MergeSort(node*& head) {
-	node* SortHead = head;
-	node* left = NULL;
-	node* right = NULL;
 
-	if (SortHead == NULL || SortHead->next == NULL) {
-		return;
-	}
-	
-	Partition(SortHead, left, right);
-	MergeSort(left);
-	MergeSort(right);
 
-	head = Merge(left, right);
-}
+
