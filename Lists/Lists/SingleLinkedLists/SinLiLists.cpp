@@ -7,7 +7,6 @@ using namespace std;
 SingleLinkedList::SingleLinkedList() {
 	head = NULL;
 	current = NULL;
-
 }
 
 void SingleLinkedList::AddNode(int newValue) {
@@ -41,16 +40,18 @@ void SingleLinkedList::DeleteLast() {
 }
 
 void SingleLinkedList::ShowList() {
-	if (head != NULL) {
+	if (head != NULL) { 
+		cout << "head: " << head->value << endl;
 		current = head;
 		cout << "List: " << head->value;
-		if (current->next != NULL) {
+		//if (current->next != NULL) {
 			while (current->next != NULL) {
 				cout << "->" << current->next->value;
 				current = current->next;
 			}
-		}
-		cout << "->NULL" << endl;
+			
+		//}
+		cout << "->(NULL)" << endl;
 	}
 	else
 		cout << "Head is NULL" << endl;
@@ -81,6 +82,7 @@ void SingleLinkedList::PopulateWithRandom(int min, int max, int howMany) {
 			int newValue = rand() % max + min;
 			SingleLinkedList::AddNode(newValue);
 		}
+		//Ostatni element to NULL, metoda addNode dodaje node'a w ktorym next = NULL.
 	}
 }
 

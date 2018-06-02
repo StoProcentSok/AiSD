@@ -6,7 +6,7 @@ static class ListsSorters : SingleLinkedList {
 
 private:
 	int GetListLength(node *head);
-	void SwitchWithNext(node* toSwitch);
+	void SwapTwoNodes(node* first, node* second);
 
 public:
 	void ListEveryElement(node *head);

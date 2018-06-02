@@ -28,30 +28,43 @@ void ListsSorters::ListEveryElement(node* head) {
 	}
 }
 
-void ListsSorters::SwitchWithNext(node* toSwitch) {
-	if (toSwitch->next != NULL) {
-		node* temp = toSwitch->next;
-		toSwitch->next = temp->next;
-		temp->next = toSwitch;
-	}
+void ListsSorters::SwapTwoNodes(node* first, node* second) {
+	//dzialacy swap na liczbach:
+	/*int helper = first->value;
+	first->value = second->value;
+	second->value = helper;*/
+
+	node* temp1 = first;
+	node* temp2 = second;
+	first = temp2;
+	temp2->next = temp1->next->next;
+
+	
+	
+
 }
 
 void ListsSorters::BubbleSort(node* head) {
 	if (head != NULL) {
 		node* temp = head;
 		int length = GetListLength(head);
+	
 		cout << "Length to sort is: " << length << endl;
-		for (int i = 0; i < length - 1; i++)
+		for (int i = 0; i < length -1; i++)
 		{
-			while (temp->next != NULL) {
-				if (temp->value > temp->next->value) {
-					SwitchWithNext(temp);
+			for (int j = 0; j < length - i; j++)
+			{
+				if (temp->next != NULL) {
+					if (temp->value > temp->next->value) {
+						SwapTwoNodes(temp, temp->next);
+						cout << "swapped" << endl;
+					}
 				}
 				temp = temp->next;
 			}
+			temp = head;
 		}
-		
+		//delete temp; <- stracone 3 godziny, rozjebuje liste, gubi heada.. :( 
 	}
 	else cout << "Head is NULL, nothing to sort" << endl;
-	//cout << "Length is" << GetListLength(head) << endl;
 }

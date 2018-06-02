@@ -7,10 +7,9 @@
 class SingleLinkedList {
 
 public:
-
 	struct node {
-		int value;
-		node* next;
+		int value = 0;
+		node* next = NULL;
 	};
 
 	SingleLinkedList();
