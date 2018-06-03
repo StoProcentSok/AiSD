@@ -126,7 +126,7 @@ void SingleLinkedList::SwitchFirstAndLast() {
 				current = current->next;
 			}
 			node* temp = current;
-			tempHead->next = 
+			//tempHead->next = 
 			
 			//node* temp = current; //container wskazuje na przedostatni element
 			

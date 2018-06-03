@@ -29,6 +29,8 @@ void ListsSorters::ListEveryElement(node* head) {
 	}
 }
 
+//////////////////// Bubble Sort ////////////////////
+
 void ListsSorters::SwapAdjacentNodes(node* first, node* second, node*& head) {
 	//dzialajacy swap na :
 	/*int helper = first->value;
@@ -58,10 +60,8 @@ void ListsSorters::SwapAdjacentNodes(node* first, node* second, node*& head) {
 		temp2->next = first;
 	}
 	
-	cout << "swapped ";
+	cout << "Swapped";
 	//TODO: Wrocic do proby swapowania bez wskazywania na elementy poprzednie.
-	
-
 }
 
 void ListsSorters::BubbleSort(node*& head) {
@@ -90,6 +90,7 @@ void ListsSorters::BubbleSort(node*& head) {
 //////////////////// Merge Sort ////////////////////
 
 void ListsSorters::MergeSort(node*& head) {
+
 	node* SortHead = head; //main head of original list to sort.
 	node* left = NULL;
 	node* right = NULL;
@@ -152,6 +153,7 @@ struct SingleLinkedList::node*& ListsSorters::Merge(node* left, node* right) {
 	}
 	return mergedList;
 }
+
 void ListsSorters::PrintMergedParts(node* head) {
 	node* temp = head;
 	while (temp != NULL) {
