@@ -152,7 +152,6 @@ struct SingleLinkedList::node*& ListsSorters::Merge(node* left, node* right) {
 	}
 	return mergedList;
 }
-
 void ListsSorters::PrintMergedParts(node* head) {
 	node* temp = head;
 	while (temp != NULL) {
@@ -161,6 +160,8 @@ void ListsSorters::PrintMergedParts(node* head) {
 	}
 	cout << endl;
 }
+
+//////////////////// Quick sort ////////////////////
 
 
 
