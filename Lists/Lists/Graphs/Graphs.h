@@ -1,20 +1,27 @@
 #ifndef GRAPHS_H
 #define GRAPHS_H
+#include<vector>
 #include "../SingleLinkedLists/SinLiLists.h"
 
-class Graphs : SingleLinkedList {
+class Graphs {
 	
 public:
 	struct krawedz {
-		krawedz* doJakiego;
-		int waga;
+		krawedz* doJakiego = NULL;
+		int waga = 0;
 	};
 	
 	Graphs();
-	Graphs(int iloscWierzcholkow) {
-		
-	}
+	Graphs(int iloscWierzcholkow);
+	void dodajKrawedz(krawedz*, int doKtorejGlowy);
+	void pokazGraf();
 
-	krawedz* listaGlow[];
+
+	std::vector<krawedz*> _glowyKrawedzi;
+
+private:
+	void pokazKrawedzi(krawedz*);
+
+	
 };
 #endif 
