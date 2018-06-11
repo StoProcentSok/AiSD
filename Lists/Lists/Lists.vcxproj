@@ -117,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinaryTrees\BinaryTrees.cpp" />
+    <ClCompile Include="Graphs\Graphs.cpp" />
     <ClCompile Include="ListsSorters\ListsSorters.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SingleLinkedLists\SinLiLists.cpp">
@@ -125,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTrees\BinaryTrees.h" />
+    <ClInclude Include="Graphs\Graphs.h" />
     <ClInclude Include="ListsSorters\ListsSorters.h" />
     <ClInclude Include="SingleLinkedLists\SinLiLists.h" />
   </ItemGroup>

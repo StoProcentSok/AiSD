@@ -27,6 +27,9 @@
     <ClCompile Include="ListsSorters\ListsSorters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Graphs\Graphs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingleLinkedLists\SinLiLists.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListsSorters\ListsSorters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphs\Graphs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
