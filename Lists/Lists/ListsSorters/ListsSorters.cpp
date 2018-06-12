@@ -32,7 +32,7 @@ void ListsSorters::ListEveryElement(node* head) {
 //////////////////// Bubble Sort ////////////////////
 
 void ListsSorters::SwapAdjacentNodes(node* first, node* second, node*& head) {
-	//dzialajacy swap na :
+	//dzialajacy swap na wartosciach :
 	/*int helper = first->value;
 	first->value = second->value;
 	second->value = helper;*/

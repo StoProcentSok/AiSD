@@ -1,8 +1,10 @@
+
 #include <iostream>
 #include <cstdlib>
 #include <cstddef>
 #include <time.h>
 #include <chrono>
+#include<algorithm>
 #include "SingleLinkedLIsts\SinLiLists.h"
 #include "BinaryTrees\BinaryTrees.h"
 #include "ListsSorters\ListsSorters.h"
@@ -10,7 +12,48 @@
 
 using namespace std;
 
+bool SortByWeight(const Edge &e1, const Edge &e2) {
+	return (e1.weightOfWertex < e2.weightOfWertex);
+}
+
 int main() {
+
+	int NoOfVertices, NoOfEdges;
+	int _startingVertex, _endingVertex;// , _weight;
+
+	cout << "Enter {NumberOfVertices NumberOfEdges} eg: '8 14': " << endl;
+	cin >> NoOfVertices >> NoOfEdges;
+
+	KruskalHelper k(NoOfVertices);
+	Edge *e;
+	e = new Edge[NoOfEdges];
+	
+	//KRUSKAL:
+	cout << "Enter the edges: {StartingVertex EndingVertex VertexWeight} eg: '0 2 6'" << endl;
+	for (int i = 0; i < NoOfEdges; i++) {
+		cin >> e[i].startingVertex;
+		cin >> e[i].endingVertex;
+		cin >> e[i].weightOfWertex;
+	}
+	//next: sort the edges according to weight;
+	sort(e, e + NoOfEdges, SortByWeight);
+
+	for (int i = 0; i < NoOfEdges; i++) {
+		_startingVertex = e[i].startingVertex;
+		_endingVertex = e[i].endingVertex;
+		if (k.FindSet(_startingVertex) != k.FindSet(_endingVertex)) {
+			e[i].AddToMST(); //Changing state of edge to "inserted into MST"
+			k.Union(_startingVertex, _endingVertex);
+		}
+	}
+
+	cout << "Result MST: u" << endl;
+	for (int i = 0; i < NoOfEdges; i++) {
+		if (e[i].IsAdded)
+			cout << "(" << e[i].startingVertex << " " << e[i].endingVertex << ")" <<  endl;
+	}
+
+////////Sorting Algorithms: 
 	////nulling random, commented for algorithms execution time comparision, need selfsame set of "randoms".
 	////srand(time(0));
 	//SingleLinkedList listForMerge; //Creating first list to perform merge sort on it.
@@ -41,14 +84,8 @@ int main() {
 	//sorter.BubbleSort(listForBubble.head);
 	//cout << "Bubble sorted list: " << endl;
 	//listForBubble.ShowList();
+////////// end of Sorting Algorithms	
 	
-	Graphs graf(5);
-	graf.dodajKrawedz(graf._glowyKrawedzi[1], 1);
-	graf.dodajKrawedz(graf._glowyKrawedzi[2], 2);
-	graf.dodajKrawedz(graf._glowyKrawedzi[3], 3);
-	graf.dodajKrawedz(graf._glowyKrawedzi[4], 4);
-	graf.dodajKrawedz(graf._glowyKrawedzi[0], 5);
-	graf.pokazGraf();
 	system("pause");
 	return 0;
 }

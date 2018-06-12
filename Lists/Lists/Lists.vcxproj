@@ -130,6 +130,9 @@
     <ClInclude Include="ListsSorters\ListsSorters.h" />
     <ClInclude Include="SingleLinkedLists\SinLiLists.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="KruskalInput.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
